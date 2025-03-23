@@ -2,7 +2,7 @@ import { useState } from "react";
 import ContactForm from "./ContactForm/ContactForm";
 import SearchBox from "./SearchBox/SearchBox";
 import ContactList from "./ContactList/ContactList";
-import * as Yup from "yup";
+import styles from "./App.module.css"; 
 
 function App() {
   const [contacts, setContacts] = useState(() => {
@@ -26,7 +26,7 @@ function App() {
   const addContact = (newContact) => {
     setContacts((prevContacts) => {
       const updatedContacts = [...prevContacts, newContact];
-      localStorage.setItem("contacts", JSON.stringify(updatedContacts)); // Зберігаємо оновлений список контактів у localStorage
+      localStorage.setItem("contacts", JSON.stringify(updatedContacts)); 
       return updatedContacts;
     });
   };
@@ -36,7 +36,7 @@ function App() {
       const updatedContacts = prevContacts.filter(
         (contact) => contact.id !== id
       );
-      localStorage.setItem("contacts", JSON.stringify(updatedContacts)); // Зберігаємо оновлений список контактів у localStorage
+      localStorage.setItem("contacts", JSON.stringify(updatedContacts)); 
       return updatedContacts;
     });
   };
@@ -44,7 +44,7 @@ function App() {
     contact.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Phonebook</h1>
       <ContactForm addContact={addContact} />
       <SearchBox value={searchQuery} onChange={handleSearchChange} />

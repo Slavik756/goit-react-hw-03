@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { nanoid } from "nanoid";
 import * as Yup from "yup";
+import style from "./ContactForm.module.css";
 
 const ContactForm = ({ addContact }) => {
   const validationSchema = Yup.object({
@@ -14,8 +15,7 @@ const ContactForm = ({ addContact }) => {
       .required("Number is required"),
   });
   return (
-    <div>
-      <h2>Add Contact</h2>
+    <div className={style.formWrapper}>
       <Formik
         initialValues={{ name: "", number: "" }}
         validationSchema={validationSchema}
@@ -29,19 +29,19 @@ const ContactForm = ({ addContact }) => {
           resetForm();
         }}
       >
-        <Form>
-          <div>
+        <Form  className={style.form}>
+          <div  className={style.formGroup}>
             <label htmlFor="name">Name</label>
-            <Field type="text" id="name" name="name" />
-            <ErrorMessage name="name" component="div" className="error" />
+            <Field type="text" id="name" name="name"  className={style.input}/>
+            <ErrorMessage name="name" component="div" className={style.error} />
           </div>
-          <div>
+          <div className={style.formGroup}> 
             <label htmlFor="number">Number</label>
-            <Field type="text" id="number" name="number" />
-            <ErrorMessage name="number" component="div" className="error" />
+            <Field type="text" id="number" name="number" className={style.input}/>
+            <ErrorMessage name="number" component="div" className={style.error} />
           </div>
 
-          <button type="submit">Add Contact</button>
+          <button type="submit" className={style.submitButton}>Add Contact</button>
         </Form>
       </Formik>
     </div>

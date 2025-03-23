@@ -1,12 +1,12 @@
-
+import style from "./Contact.module.css"
 const Contact = ({name, number, onDelete, id}) => {
     return (
+        <div className={style.wrap}>
         <div>
-        <div>
-            <div>
+            <div className={style.pi}>
              <p>{name}</p>   
             </div>
-            <div>
+            <div > 
                 <p>{number}</p>
             </div>
         </div>
